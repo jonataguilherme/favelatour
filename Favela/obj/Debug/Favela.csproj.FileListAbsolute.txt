@@ -1,0 +1,13 @@
+c:\users\guilherme\documents\visual studio 2010\Projects\Favela\Favela\bin\Favela.dll
+c:\users\guilherme\documents\visual studio 2010\Projects\Favela\Favela\bin\Favela.pdb
+c:\users\guilherme\documents\visual studio 2010\Projects\Favela\Favela\obj\Debug\Favela.dll
+c:\users\guilherme\documents\visual studio 2010\Projects\Favela\Favela\obj\Debug\Favela.pdb
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\bin\Favela.dll
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\bin\Favela.pdb
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\obj\Debug\Favela.dll
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\obj\Debug\Favela.pdb
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\bin\DefaultPage.cs
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\bin\Favela.dll
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\bin\Favela.pdb
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\obj\Debug\Favela.dll
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\obj\Debug\Favela.pdb

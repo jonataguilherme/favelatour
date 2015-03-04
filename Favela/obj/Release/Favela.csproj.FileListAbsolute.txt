@@ -1,0 +1,21 @@
+C:\Users\Guilherme\documents\visual studio 2010\Projects\Favela\Favela\bin\Favela.dll
+C:\Users\Guilherme\documents\visual studio 2010\Projects\Favela\Favela\bin\Favela.pdb
+C:\Users\Guilherme\documents\visual studio 2010\Projects\Favela\Favela\obj\Release\Favela.dll
+C:\Users\Guilherme\documents\visual studio 2010\Projects\Favela\Favela\obj\Release\Favela.pdb
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\bin\DefaultPage.cs
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\bin\Favela.dll
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\bin\Favela.pdb
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\obj\Release\Favela.dll
+C:\Users\Michel\Documents\Trabalho\Favela\Favela\obj\Release\Favela.pdb
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\bin\DefaultPage.cs
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\bin\Favela.dll
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\bin\Favela.pdb
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\obj\Release\Favela.csprojResolveAssemblyReference.cache
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\obj\Release\Favela.dll
+C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\obj\Release\Favela.pdb
+C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\bin\DefaultPage.cs
+C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\bin\Favela.dll
+C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\bin\Favela.pdb
+C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\obj\Release\Favela.csprojResolveAssemblyReference.cache
+C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\obj\Release\Favela.dll
+C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\obj\Release\Favela.pdb
