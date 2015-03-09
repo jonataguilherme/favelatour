@@ -1,0 +1,33 @@
+Pontos a serem concluídos e requisitos levantados: 
+
+Botões de Alterar e Excluir em Reserva
+
+Botões de Alterar e Excluir em Passeio
+
+Atualização (refresh da página) das informações quando são inseridas
+
+A opção NO da Reserva é quando o hospede não está no hotel (No Show)
+
+Em Reserva, a data e o turno no alto da página devem controlar toda informação da página, inclusões, exclusões e exibições
+
+Reserva com no máximo 75 dias de antecedência
+ 
+Não incluir reserva com data passada
+
+Incluir filtro de turno nas Reservas / Grupo / Grupo Gerado
+
+Habilitar o grid em Motorista
+
+Habilitar o grid em Guia
+
+Habilitar o grid em Hotel
+
+Reserva => Pré-Reserva (Novo mome)
+Grupo   => Reserva (Novo mome)
+Grupo Gerado => Passeio (Novo nome)
+
+Remover campo País em Reserva
+
+Grupo acima de 14 só podem existir se forem privados possibilitando a inclusão de dois ou mais Guias.
+
+Colocar página nos padrões de design da página favelatour.com.br
