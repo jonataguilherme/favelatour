@@ -32,7 +32,7 @@ namespace Favela.User
         protected void ckbNoHotel_CheckedChanged(object sender, EventArgs e)
         {
             //cmbHotel.Enabled = !cmbHotel.Enabled;
-            txtApto.Enabled = cmbHotel.Enabled;
+            txtApto.Enabled = !ckbNoHotel.Checked;
         }
 
         private void SetIdiomaDropDownList()
@@ -259,23 +259,23 @@ namespace Favela.User
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                Idioma i = new Idioma();
-                i.Id = int.Parse(e.Row.Cells[2].Text);
-                Idioma.Repository.Get(i);
-                e.Row.Cells[2].Text = i.Descricao;
+                //Idioma i = new Idioma();
+                //i.Id = int.Parse(e.Row.Cells[2].Text);
+                //Idioma.Repository.Get(i);
+                //e.Row.Cells[2].Text = i.Descricao;
 
                 Hotel h = new Hotel();
-                h.Id = int.Parse(e.Row.Cells[4].Text);
+                h.Id = int.Parse(e.Row.Cells[3].Text);
                 if (h.Id == 0)
                 {
-                    e.Row.Cells[4].Text = "Não cadastrado";
+                    e.Row.Cells[3].Text = "Não cadastrado";
                     e.Row.ForeColor = System.Drawing.Color.White;
                     e.Row.BackColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     Hotel.Repository.Get(h);
-                    e.Row.Cells[4].Text = h.Nome;
+                    e.Row.Cells[3].Text = h.Nome;
                 }
             }
         }
