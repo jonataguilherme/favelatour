@@ -11,3 +11,9 @@ C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\bin\Favela.dll
 C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\bin\Favela.pdb
 C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\obj\Debug\Favela.dll
 C:\Users\Guilherme\Desktop\Favelapub\Favela\Favela\obj\Debug\Favela.pdb
+C:\Repositorio\favelatour\Favela\bin\DefaultPage.cs
+C:\Repositorio\favelatour\Favela\bin\Favela.dll
+C:\Repositorio\favelatour\Favela\bin\Favela.pdb
+C:\Repositorio\favelatour\Favela\obj\Debug\Favela.csprojResolveAssemblyReference.cache
+C:\Repositorio\favelatour\Favela\obj\Debug\Favela.dll
+C:\Repositorio\favelatour\Favela\obj\Debug\Favela.pdb

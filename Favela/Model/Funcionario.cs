@@ -32,7 +32,7 @@ namespace Favela.Library.Model
 
 		#region Properties
 	   
-		public string Matricula 
+		public int? Matricula 
 		{ 
 			get; 
 			set; 
@@ -80,7 +80,7 @@ namespace Favela.Library.Model
 
 		public void Load(DataRow row)
         {
-			if (row.Table.Columns.Contains("matricula") && !Convert.IsDBNull(row["matricula"])) this.Matricula = Convert.ToString(row["matricula"]);
+            if (row.Table.Columns.Contains("matricula") && !Convert.IsDBNull(row["matricula"])) this.Matricula = Convert.ToInt32(row["matricula"]);
 			if (row.Table.Columns.Contains("nome") && !Convert.IsDBNull(row["nome"])) this.Nome = Convert.ToString(row["nome"]);
 			if (row.Table.Columns.Contains("telefone") && !Convert.IsDBNull(row["telefone"])) this.Telefone = Convert.ToString(row["telefone"]);
 			if (row.Table.Columns.Contains("email") && !Convert.IsDBNull(row["email"])) this.Email = Convert.ToString(row["email"]);

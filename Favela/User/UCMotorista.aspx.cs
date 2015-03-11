@@ -33,13 +33,13 @@ namespace Favela.User
             Funcionario novomotorista = new Funcionario();
 
             novomotorista.IdPapel = 5;
-            //novomotorista.Matricula = String.Intern(txtNome.Text.Trim()).Substring(5,10);
             novomotorista.Nome = txtNome.Text.Trim();
             novomotorista.Telefone = txtTel.Text.Trim();
 
             Funcionario.Repository.Add(novomotorista);
 
             ClearFields();
+            SetDataMotoristasGrid();
         }
 
         private void ClearFields()

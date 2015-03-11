@@ -38,13 +38,13 @@ namespace Favela.Library.Model
 			set; 
 		}
 
-		public string MatriculaMotorista 
+		public int? MatriculaMotorista 
 		{ 
 			get; 
 			set; 
 		}
 
-		public string MatriculaGuia 
+		public int? MatriculaGuia 
 		{ 
 			get; 
 			set; 
@@ -62,7 +62,7 @@ namespace Favela.Library.Model
 			set; 
 		}
 
-		public string MatriculaFunc 
+		public int? MatriculaFunc 
 		{ 
 			get; 
 			set; 
@@ -109,11 +109,11 @@ namespace Favela.Library.Model
 		public void Load(DataRow row)
         {
 			if (row.Table.Columns.Contains("idGrupo") && !Convert.IsDBNull(row["idGrupo"])) this.IdGrupo = Convert.ToInt32(row["idGrupo"]);
-			if (row.Table.Columns.Contains("matriculaMotorista") && !Convert.IsDBNull(row["matriculaMotorista"])) this.MatriculaMotorista = Convert.ToString(row["matriculaMotorista"]);
-			if (row.Table.Columns.Contains("matriculaGuia") && !Convert.IsDBNull(row["matriculaGuia"])) this.MatriculaGuia = Convert.ToString(row["matriculaGuia"]);
+            if (row.Table.Columns.Contains("matriculaMotorista") && !Convert.IsDBNull(row["matriculaMotorista"])) this.MatriculaMotorista = Convert.ToInt32(row["matriculaMotorista"]);
+            if (row.Table.Columns.Contains("matriculaGuia") && !Convert.IsDBNull(row["matriculaGuia"])) this.MatriculaGuia = Convert.ToInt32(row["matriculaGuia"]);
 			if (row.Table.Columns.Contains("obs") && !Convert.IsDBNull(row["obs"])) this.Obs = Convert.ToString(row["obs"]);
 			if (row.Table.Columns.Contains("status") && !Convert.IsDBNull(row["status"])) this.Status = Convert.ToInt32(row["status"]);
-			if (row.Table.Columns.Contains("matriculaFunc") && !Convert.IsDBNull(row["matriculaFunc"])) this.MatriculaFunc = Convert.ToString(row["matriculaFunc"]);
+            if (row.Table.Columns.Contains("matriculaFunc") && !Convert.IsDBNull(row["matriculaFunc"])) this.MatriculaFunc = Convert.ToInt32(row["matriculaFunc"]);
 			if (row.Table.Columns.Contains("invertido") && !Convert.IsDBNull(row["invertido"])) this.Invertido = Convert.ToBoolean(row["invertido"]);
 			if (row.Table.Columns.Contains("quantidade") && !Convert.IsDBNull(row["quantidade"])) this.Quantidade = Convert.ToInt32(row["quantidade"]);
 			if (row.Table.Columns.Contains("horario") && !Convert.IsDBNull(row["horario"])) this.Horario = Convert.ToString(row["horario"]);

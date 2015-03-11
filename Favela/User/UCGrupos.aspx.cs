@@ -30,7 +30,7 @@ namespace Favela.User
 
             foreach (Funcionario motorista in motoristasCadastrados)
             {
-                ListItem item = new ListItem(motorista.Nome, motorista.Matricula);
+                ListItem item = new ListItem(motorista.Nome, motorista.Matricula.ToString());
                 cmbMotorista.Items.Add(item);
             }
 
@@ -45,7 +45,7 @@ namespace Favela.User
 
             foreach (Funcionario guia in guiasCadastrados)
             {
-                ListItem item = new ListItem(guia.Nome, guia.Matricula);
+                ListItem item = new ListItem(guia.Nome, guia.Matricula.ToString());
                 cmbGuia.Items.Add(item);
             }
 
@@ -104,11 +104,11 @@ namespace Favela.User
 
             Grupo novoGrupo = new Grupo();
 
-            novoGrupo.MatriculaGuia = cmbGuia.SelectedValue;
-            novoGrupo.MatriculaMotorista = cmbMotorista.SelectedValue;
+            novoGrupo.MatriculaGuia = Int32.Parse(cmbGuia.SelectedValue);
+            novoGrupo.MatriculaMotorista = Int32.Parse(cmbMotorista.SelectedValue);
             novoGrupo.Horario = String.Empty;
             novoGrupo.Invertido = false;
-            novoGrupo.MatriculaFunc = cmbGuia.SelectedValue;
+            novoGrupo.MatriculaFunc = Int32.Parse(cmbGuia.SelectedValue);
             novoGrupo.Obs = String.Empty;
             novoGrupo.Quantidade = qtd;
             novoGrupo.Status = 1;
@@ -187,11 +187,11 @@ namespace Favela.User
             {
                 Funcionario func = new Funcionario();
 
-                func.Matricula = e.Row.Cells[1].Text;
+                func.Matricula = Int32.Parse(e.Row.Cells[1].Text);
                 Funcionario.Repository.Get(func);
                 e.Row.Cells[1].Text = func.Nome;
 
-                func.Matricula = e.Row.Cells[2].Text;
+                func.Matricula = Int32.Parse(e.Row.Cells[2].Text);
                 Funcionario.Repository.Get(func);
                 e.Row.Cells[2].Text = func.Nome;
             }

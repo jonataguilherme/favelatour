@@ -34,13 +34,13 @@ namespace Favela.User
 
             novoGuia.Email = txtEmail.Text.Trim();
             novoGuia.IdPapel = 4;
-            //novoGuia.Matricula = String.Intern(txtNome.Text.Trim()).Substring(5,10);
             novoGuia.Nome = txtNome.Text.Trim();
             novoGuia.Telefone = txtTel.Text.Trim();
 
             Funcionario.Repository.Add(novoGuia);
 
             ClearFields();
+            SetDataGuiasGrid();
         }
 
         private void ClearFields()
