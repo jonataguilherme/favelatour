@@ -39,7 +39,7 @@
            <tbody>
               <tr>
                 <td colspan="2" align="center" class="style4"> 
-                <input name="bntConfirma" type="button" value="Confirmar" />
+                <input name="bntConfirma" type="button" value="Inserir" />
                     <br/>
                  </td>
                </tr>                     

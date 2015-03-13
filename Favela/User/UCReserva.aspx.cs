@@ -94,7 +94,6 @@ namespace Favela.User
             txtApto.Text = string.Empty;
             txtCliente.Text = string.Empty;
             txtInfo.Text = string.Empty;
-            txtPais.Text = string.Empty;
             txtQuantidade.Text = string.Empty;
 
             cmbHotel.SelectedValue = "1";
@@ -167,7 +166,6 @@ namespace Favela.User
             novaReserva.IdTurno = Convert.ToInt32(cmbTurno.SelectedValue);
             novaReserva.NomeCliente = txtCliente.Text;
             novaReserva.OrigemPrecoContato = txtInfo.Text;
-            novaReserva.Pais = txtPais.Text;
             novaReserva.Quantidade = Convert.ToInt32(txtQuantidade.Text);
             novaReserva.Privativo = ckbPrivado.Checked;
         }
@@ -208,7 +206,6 @@ namespace Favela.User
             txtCliente.Text = res.NomeCliente;
             txtHorario.Text = res.DataHora.ToString("hh:mm");
             txtInfo.Text = res.OrigemPrecoContato;
-            txtPais.Text = res.Pais;
             txtQuantidade.Text = res.Quantidade.ToString();
 
             ckbNoHotel.Checked = res.NoHotel;
@@ -252,6 +249,11 @@ namespace Favela.User
             txtCalendario.Visible = true;
             cldCalendario.Visible = false;
             LBCalendario.Visible = true;
+        }
+        protected void chkIncluir_CheckedChanged(object sender, EventArgs e)
+        {
+            
+
         }
 
         protected void gvGerGrupo_DataBound(object sender, GridViewRowEventArgs e)

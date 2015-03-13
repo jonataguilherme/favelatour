@@ -96,7 +96,7 @@
                    
                      <td align="left" class="style32">
                         <h3>NO<br />
-                            <asp:CheckBox runat="server" ID="ckbNoHotel" name="sim" AutoPostBack="true" value="sim" OnCheckedChanged="ckbNoHotel_CheckedChanged" />
+                            <asp:CheckBox runat="server" ID="ckbNoHotel" name="sim" AutoPostBack="true" value="sim" OnCheckedChanged="ckbNoHotel_CheckedChanged" Checked="true"/>
                     </td>     
                     <td colspan="2" align="left">
                         <h3>Hotel<br />
@@ -119,14 +119,6 @@
                             style="width: 200px"/>
                             </td>
                     </tr>--%>
-                <tr>
-                    <td colspan="8" align="left" class="style2">
-                        <h3>País<br />
-                            <asp:TextBox runat="server" ID="txtPais" autocomplete="on" type="cadastro" name="pais" size="10"
-                                Style="width: 80px" />
-                        
-                    </td>
-                </tr>
                 <tr>
                     <td colspan="8" align="center">
                         <asp:TextBox runat="server" ID="hdnId" Visible="false"></asp:TextBox>
@@ -151,7 +143,7 @@
                         <td colspan="2">
                             <asp:GridView ID="gvGerGrupo" runat="server" DataKeyNames="Id" BoderColor="#4B4D4C" CellPadding="2" GridLines="None"
                                 BorderWidth="1px" CellSpacing="1" Width="100%" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="gvGerGrupo_PageIndexChanging"
-                                Font-Size="10pt" PageSize="5" EmptyDataText="Nenhuma reserva cadastrada" OnRowDataBound="gvGerGrupo_DataBound">
+                                Font-Size="10pt" PageSize="10" EmptyDataText="Nenhuma reserva cadastrada" OnRowDataBound="gvGerGrupo_DataBound">
                                 <RowStyle BackColor="#CDC5BF" ForeColor="#5C5C5C" />
                                 <HeaderStyle BackColor="#CDC5BF" Font-Bold="true" ForeColor="White" />
                                 <AlternatingRowStyle BackColor="#F1EFD8" />
@@ -161,26 +153,32 @@
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Nome/País" DataField="NomeCliente">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="125px" />
-                                        <HeaderStyle HorizontalAlign="Center" />
-                                        <ItemStyle HorizontalAlign="Center" />
-                                    </asp:BoundField>
-                                    <asp:BoundField HeaderText="Idioma" DataField="IdIdioma">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="25px" />
-                                        <HeaderStyle HorizontalAlign="Center" />
-                                        <ItemStyle HorizontalAlign="Center" />
-                                    </asp:BoundField>
                                     <asp:BoundField HeaderText="Nº" DataField="Quantidade">
                                         <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Hotel" DataField="IdHotel">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="100px" />
+                                    <asp:BoundField HeaderText="Nome/País" DataField="NomeCliente">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="125px" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
+                                    <asp:BoundField HeaderText="Hotel" DataField="IdHotel">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Apt" DataField="Apartamento">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Origem Preço Contato" DataField="OrigemPrecoContato">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    
                                     <asp:TemplateField HeaderText="Ação">
                                         <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="20px" HorizontalAlign="Center" />
                                         <HeaderStyle HorizontalAlign="Center" />

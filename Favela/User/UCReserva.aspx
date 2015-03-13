@@ -2,10 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
-        .style2 {
-            width: 142px;
-        }
-
+        
         .style10 {
             width: 884px;
         }
@@ -41,7 +38,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>pré-Reserva </h2>
+    <h2>Filtro Data/Turno</h2>
     <table border="0" cellspacing="0" cellpadding="3" style="width: 250px">
         <tbody>
             <tr>
@@ -60,22 +57,23 @@
                         <asp:ListItem Value="1">Manhã</asp:ListItem>
                         <asp:ListItem Value="2">Tarde</asp:ListItem>
                     </asp:DropDownList>
-                </td>
-                <td>
-                    
-
-                         <h4>Idioma</h4>
-                        <asp:DropDownList ID="cmbIdioma" name="Idioma" runat="server">
-                        </asp:DropDownList>
-                </td>
-                <td align="left" class="style15">
-                    <h4>Privado</h4>
-                    <asp:CheckBox ID="ckbPrivado" runat="server" />
-                </td>
+                </td>                
             </tr>
         </tbody>
     </table>
+    <h2>Cadastrar pré-Reserva</h2>
     <table width="914" border="1" align="center" cellpadding="8" cellspacing="0" bgcolor="#FFFFFF">
+        <table>
+            <td align="left" class="style15">
+                <h4>Idioma</h4>
+                <asp:DropDownList ID="cmbIdioma" name="Idioma" runat="server">
+                </asp:DropDownList>
+            </td>
+            <td align="left" class="style15">
+                <h4>Privado</h4>
+                <asp:CheckBox ID="ckbPrivado" runat="server" />
+            </td>
+        </table>
         <table border="0" cellspacing="0" cellpadding="5" style="width: 914px">
             <tbody>
                 <tr>
@@ -131,7 +129,7 @@
         </table>
     </table>
     <br />
-    <h2>pré-Reservas Cadastradas</h2>
+    <h2>Grupo 1</h2>
    
         <%--Inserir Filtros de pesquisa Cliente, Turno e Dia--%>
    
@@ -149,42 +147,43 @@
                                 <AlternatingRowStyle BackColor="#F1EFD8" />
                                 <Columns>
                                     <asp:BoundField HeaderText="Horário" DataField="DataHora">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="5px" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     <asp:BoundField HeaderText="Nº" DataField="Quantidade">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="5px" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     <asp:BoundField HeaderText="Nome/País" DataField="NomeCliente">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="125px" />
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="25px" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     <asp:BoundField HeaderText="Hotel" DataField="IdHotel">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="15px" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     <asp:BoundField HeaderText="Apt" DataField="Apartamento">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="5px" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     <asp:BoundField HeaderText="Origem Preço Contato" DataField="OrigemPrecoContato">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="10px" />
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="110px" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     
                                     <asp:TemplateField HeaderText="Ação">
-                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="20px" HorizontalAlign="Center" />
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="30px" HorizontalAlign="Center" />
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemTemplate>
-                                            <asp:Button ID="btnAlterar" runat="server" CommandArgument='<%# Bind("Id")%>' Enabled="false" AutoPostBack="true" Text="Alterar" OnClick="btnAlterar_onClick"></asp:Button><br />
+                                            <asp:Button ID="btnAlterar" runat="server" CommandArgument='<%# Bind("Id")%>' Enabled="false" AutoPostBack="true" Text="Alterar" OnClick="btnAlterar_onClick"></asp:Button>
                                             <asp:Button ID="btnExcluir" runat="server" CommandArgument='<%# Bind("Id")%>' Enabled="false" AutoPostBack="true" Text="Excluir" OnClick="btnExcluir_onClick"></asp:Button>
+                                            <asp:CheckBox class="checkIncluir" AutoPostBack="true" OnCheckedChanged="chkIncluir_CheckedChanged" ID="chkIncluir" runat="server" Text="Incluir"></asp:CheckBox>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

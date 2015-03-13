@@ -19,3 +19,9 @@ C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\bin\Favela.pdb
 C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\obj\Release\Favela.csprojResolveAssemblyReference.cache
 C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\obj\Release\Favela.dll
 C:\Users\Guilherme\Desktop\Favelatour\Versao-35\Favela\obj\Release\Favela.pdb
+C:\Repositorio\favelatour\Favela\bin\DefaultPage.cs
+C:\Repositorio\favelatour\Favela\bin\Favela.pdb
+C:\Repositorio\favelatour\Favela\obj\Release\Favela.csprojResolveAssemblyReference.cache
+C:\Repositorio\favelatour\Favela\obj\Release\Favela.dll
+C:\Repositorio\favelatour\Favela\obj\Release\Favela.pdb
+C:\Repositorio\favelatour\Favela\bin\Favela.dll
