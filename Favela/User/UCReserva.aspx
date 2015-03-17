@@ -46,7 +46,7 @@
                     <h4>
                         <asp:LinkButton ID="LBCalendario" Text="Data do Passeio" OnClick="LBCalendario_Click" runat="server" />
                         <asp:Calendar ID="cldCalendario" Text="Calendário" runat="server" Visible="false" OnSelectionChanged="cldCalendario_Click" />
-                        <asp:TextBox ID="txtCalendario" Width="70px" runat="server" Visible="false" Enabled="false"></asp:TextBox>
+                        <asp:TextBox ID="txtCalendario" Width="70px" runat="server" Visible="true" Enabled="false"></asp:TextBox>
                     </h4>
                     <asp:Label ID="Calendario1" runat="server" />
 
@@ -161,6 +161,21 @@
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
+                                    <asp:BoundField HeaderText="Idioma" DataField="IdIdioma">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="15px" />
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Pvd" DataField="Privativo">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="15px" />
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="NO" DataField="NoHotel">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="15px" />
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
                                     <asp:BoundField HeaderText="Hotel" DataField="IdHotel">
                                         <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="15px" />
                                         <HeaderStyle HorizontalAlign="Center" />
@@ -183,11 +198,22 @@
                                         <ItemTemplate>
                                             <asp:Button ID="btnAlterar" runat="server" CommandArgument='<%# Bind("Id")%>' Enabled="false" AutoPostBack="true" Text="Alterar" OnClick="btnAlterar_onClick"></asp:Button>
                                             <asp:Button ID="btnExcluir" runat="server" CommandArgument='<%# Bind("Id")%>' Enabled="false" AutoPostBack="true" Text="Excluir" OnClick="btnExcluir_onClick"></asp:Button>
-                                            <asp:CheckBox class="checkIncluir" AutoPostBack="true" OnCheckedChanged="chkIncluir_CheckedChanged" ID="chkIncluir" runat="server" Text="Incluir"></asp:CheckBox>
+                                            <%--<asp:CheckBox class="checkIncluir" AutoPostBack="true" OnCheckedChanged="chkIncluir_CheckedChanged" ID="chkIncluir" runat="server" Text="Incluir"></asp:CheckBox>--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+
+                            <div style="float: right">
+                                 <asp:DropDownList ID="cmbGuia" name="hotel" Style="width: 304px" runat="Server">
+                                <asp:ListItem Value="0">Selecione o guia</asp:ListItem>
+                                   </asp:DropDownList>
+                                
+                                 <asp:DropDownList ID="cmbMotorista" name="hotel" Style="width: 304px" runat="Server">
+                                <asp:ListItem Value="0">Selecione o motorista</asp:ListItem>
+                                   </asp:DropDownList>
+                                <%--<asp:Button runat="server" ID="btnGerarGrupo" Text="Gerar Grupo" OnClick="btnGerarGrupo_Click"/>--%>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
