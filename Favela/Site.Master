@@ -32,8 +32,8 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Início"/>
-                        <asp:MenuItem NavigateUrl="~/User/UCReserva.aspx" Text="Pré-Reserva"/>
-                        <asp:MenuItem NavigateUrl="~/User/UCGrupos.aspx" Text="Passeio"/>
+                        <asp:MenuItem NavigateUrl="~/User/UCReserva.aspx" Text="Reservas"/>
+                        <%--<asp:MenuItem NavigateUrl="~/User/UCGrupos.aspx" Text="Passeio"/>--%>
                         <asp:MenuItem NavigateUrl="~/User/UCGuia.aspx" Text="Guias"/>
                         <asp:MenuItem NavigateUrl="~/User/UCMotorista.aspx" Text="Motoristas"/>
                         <asp:MenuItem NavigateUrl="~/User/UCHotel.aspx" Text="Hotel"/>
