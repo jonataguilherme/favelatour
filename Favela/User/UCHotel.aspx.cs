@@ -14,9 +14,8 @@ namespace Favela.User
         {
             if (!Page.IsPostBack)
             {
-                
+                this.SetDropDownList();
             }
-            this.SetDropDownList();
         }
 
         private void SetDropDownList()
@@ -25,15 +24,17 @@ namespace Favela.User
 
             hoteisCadastrados = Hotel.Repository.GetAll();
 
-            gvHotGrupo.DataSource = hoteisCadastrados;
-            gvHotGrupo.DataBind();
+            foreach (Hotel hotel in hoteisCadastrados)
+            {
+                
+            }
 
         }
 
         protected void btnConfirma(object sender, EventArgs e)
         {
-            //Response.Redirect("?User=UCHotel");
-            //Context.ApplicationInstance.CompleteRequest();
+            Response.Redirect("?User=UCHotel");
+            Context.ApplicationInstance.CompleteRequest();
         }
         protected void gvHotGrupo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

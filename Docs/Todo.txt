@@ -6,6 +6,8 @@ Botões de Alterar e Excluir em Passeio
 
 Atualização (refresh da página) das informações quando são inseridas
 
+A opção NO da Reserva é quando o hospede não está no hotel (No Show)
+
 Em Reserva, a data e o turno no alto da página devem controlar toda informação da página, inclusões, exclusões e exibições
 
 Reserva com no máximo 75 dias de antecedências
@@ -13,6 +15,18 @@ Reserva com no máximo 75 dias de antecedências
 Não incluir reserva com data passada
 
 Incluir filtro de turno nas Reservas / Grupo / Grupo Gerado
+
+Ordem dos campos da grid de reserva: Grupo, Horário, N°, Nome/País, Idioma, Pvd(Privado), NO, Hotel, Apto, Origem/Preço/Contato
+
+Alterar campo de Horário para exibir apenas horário, sem data
+
+Incluir campo de inserção de reserva Grupo
+
+Habilitar o grid em Motorista
+
+Habilitar o grid em Guia
+
+Habilitar o grid em Hotel
 
 Habilitar busca em Hotel
 

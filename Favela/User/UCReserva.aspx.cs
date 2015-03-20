@@ -17,44 +17,8 @@ namespace Favela.User
             {
                 this.SetHotelDropDownList();
                 this.SetIdiomaDropDownList();
-
-                this.SetGuiasDropDownList();
-                this.SetMotoristasDropDownList();
-
-                txtCalendario.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                SetDataReservasGrid();
             }
-
-            SetDataReservasGrid();
-        }
-
-        private void SetMotoristasDropDownList()
-        {
-            List<Funcionario> motoristasCadastrados = new List<Funcionario>();
-
-            motoristasCadastrados = Funcionario.Repository.GetAllMotoristas();
-
-            foreach (Funcionario motorista in motoristasCadastrados)
-            {
-                ListItem item = new ListItem(motorista.Nome, motorista.Matricula.ToString());
-                cmbMotorista.Items.Add(item);
-            }
-
-            cmbMotorista.SelectedValue = "0";
-        }
-
-        private void SetGuiasDropDownList()
-        {
-            List<Funcionario> guiasCadastrados = new List<Funcionario>();
-
-            guiasCadastrados = Funcionario.Repository.GetAllGuias();
-
-            foreach (Funcionario guia in guiasCadastrados)
-            {
-                ListItem item = new ListItem(guia.Nome, guia.Matricula.ToString());
-                cmbGuia.Items.Add(item);
-            }
-
-            cmbGuia.SelectedValue = "0";
         }
 
         private void SetDataReservasGrid()
@@ -224,7 +188,6 @@ namespace Favela.User
             btnCancelar.Visible = true;
             btnInserir.Visible = false;
         }
-
         private void showBtnInserir()
         {
             btnConfirmaAlterar.Visible = false;
@@ -264,7 +227,6 @@ namespace Favela.User
         { 
         
         }
-
         protected void gvGrupoGer_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
@@ -288,7 +250,6 @@ namespace Favela.User
             cldCalendario.Visible = false;
             LBCalendario.Visible = true;
         }
-
         protected void chkIncluir_CheckedChanged(object sender, EventArgs e)
         {
             
@@ -300,46 +261,23 @@ namespace Favela.User
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //Horário
-                e.Row.Cells[0].Text = DateTime.Parse(e.Row.Cells[0].Text).ToString("hh:MM");
+                //Idioma i = new Idioma();
+                //i.Id = int.Parse(e.Row.Cells[2].Text);
+                //Idioma.Repository.Get(i);
+                //e.Row.Cells[2].Text = i.Descricao;
 
-                //Idioma
-                Idioma i = new Idioma();
-                i.Id = int.Parse(e.Row.Cells[3].Text);
-                Idioma.Repository.Get(i);
-                e.Row.Cells[3].Text = i.Descricao;
-
-                //Privativo
-                bool pvd = bool.Parse(e.Row.Cells[4].Text);
-                if (pvd)
-                {
-                    e.Row.Cells[4].Text = "S";
-                    e.Row.ForeColor = System.Drawing.Color.White;
-                    e.Row.BackColor = System.Drawing.Color.Red;
-                }
-                else
-                    e.Row.Cells[4].Text = String.Empty;
-
-                //NO
-                bool NO = bool.Parse(e.Row.Cells[5].Text);
-                if (NO)
-                    e.Row.Cells[5].Text = "S";
-                else
-                    e.Row.Cells[5].Text = String.Empty;
-
-                //Hotel
                 Hotel h = new Hotel();
-                h.Id = int.Parse(e.Row.Cells[6].Text);
+                h.Id = int.Parse(e.Row.Cells[3].Text);
                 if (h.Id == 0)
                 {
-                    e.Row.Cells[6].Text = "Não cadastrado";
+                    e.Row.Cells[3].Text = "Não cadastrado";
                     e.Row.ForeColor = System.Drawing.Color.White;
                     e.Row.BackColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     Hotel.Repository.Get(h);
-                    e.Row.Cells[6].Text = h.Nome;
+                    e.Row.Cells[3].Text = h.Nome;
                 }
             }
         }
