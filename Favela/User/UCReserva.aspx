@@ -2,7 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
-        
+        .hiddencol { 
+            display: none;
+        }
         .style10 {
             width: 884px;
         }
@@ -11,30 +13,26 @@
             width: 83px;
         }
 
-        .style24
-        {
+        .style24 {
             width: 62px;
         }
-        
-        .style28
-        {
+
+        .style28 {
             width: 189px;
         }
-        .style31
-        {
+
+        .style31 {
             width: 28px;
         }
-        .style32
-        {
+
+        .style32 {
             width: 1px;
         }
 
-        .style35
-        {
+        .style35 {
             width: 59px;
         }
-
-        </style>
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -44,27 +42,33 @@
             <tr>
                 <td style="width: auto">
                     <h4>
-                        <asp:LinkButton ID="LBCalendario" Text="Data do Passeio" OnClick="LBCalendario_Click" runat="server" />
-                        <asp:Calendar ID="cldCalendario" Text="Calendário" runat="server" Visible="false" OnSelectionChanged="cldCalendario_Click" />
-                        <asp:TextBox ID="txtCalendario" Width="70px" runat="server" Visible="true" Enabled="false"></asp:TextBox>
+                        <asp:LinkButton ID="LBCalendario" Text="Data do Passeio"
+                             OnClick="LBCalendario_Click" runat="server" />
+                        <asp:Calendar ID="cldCalendario" Text="Calendário" runat="server" 
+                            Visible="false" OnSelectionChanged="cldCalendario_Click" />
+                        <asp:TextBox ID="txtCalendario" Width="70px" runat="server" 
+                            Visible="true" Enabled="false"></asp:TextBox>
+                        <asp:TextBox ID="txtDataAnterior" Width="70px" runat="server" 
+                            Visible="false" Enabled="false"></asp:TextBox>
                     </h4>
                     <asp:Label ID="Calendario1" runat="server" />
 
                 </td>
+                <td align="left"><br /> <asp:Button runat="server" ID="btnHoje" OnClick="btnHoje_Click" Text="Hoje" /></td>
                 <td align="left" class="style15">
                     <h4>Turno</h4>
                     <asp:DropDownList runat="server" ID="cmbTurno" name="Turno" Style="width: 85px">
                         <asp:ListItem Value="1">Manhã</asp:ListItem>
                         <asp:ListItem Value="2">Tarde</asp:ListItem>
                     </asp:DropDownList>
-                </td>                
+                </td>
             </tr>
         </tbody>
     </table>
     <h2>Cadastrar pré-Reserva</h2>
     <table width="914" border="1" align="center" cellpadding="8" cellspacing="0" bgcolor="#FFFFFF">
         <table>
-            <td align="left" class="style15">
+            <%--<td align="left" class="style15">
                 <h4>Idioma</h4>
                 <asp:DropDownList ID="cmbIdioma" name="Idioma" runat="server">
                 </asp:DropDownList>
@@ -72,30 +76,31 @@
             <td align="left" class="style15">
                 <h4>Privado</h4>
                 <asp:CheckBox ID="ckbPrivado" runat="server" />
-            </td>
+            </td>--%>
         </table>
         <table border="0" cellspacing="0" cellpadding="5" style="width: 914px">
             <tbody>
                 <tr>
                     <td align="left" class="style24">
-                       <h4>Horário</h4>
-                    <asp:TextBox runat="server" ID="txtHorario" autocomplete="on" type="cadastro" name="horario" size="10"
-                        Style="width: 50px" />
+                        <h4>Horário</h4>
+                        <asp:TextBox runat="server" ID="txtHorario" autocomplete="on" type="cadastro" name="horario" size="10"
+                            Style="width: 50px" />
                     </td>
+                    
                     <td align="left" class="style31">
                         <h3>Nº<br />
                             <asp:TextBox runat="server" ID="txtQuantidade" type="cadastro" name="quantidade" size="2" Style="width: 20px" />
                     </td>
                     <td align="left" class="style28">
                         <h3>Nome/País<br />
-                            <asp:TextBox runat="server" ID="txtCliente" align="center" type="cadastro" 
+                            <asp:TextBox runat="server" ID="txtCliente" align="center" type="cadastro"
                                 name="nCliente" size="10" Width="165px" />
-                    </td>                                    
-                   
-                     <td align="left" class="style32">
+                    </td>
+
+                    <td align="left" class="style32">
                         <h3>NO<br />
-                            <asp:CheckBox runat="server" ID="ckbNoHotel" name="sim" AutoPostBack="true" value="sim" OnCheckedChanged="ckbNoHotel_CheckedChanged" Checked="true"/>
-                    </td>     
+                            <asp:CheckBox runat="server" ID="ckbNoHotel" name="sim" AutoPostBack="true" value="sim" OnCheckedChanged="ckbNoHotel_CheckedChanged" Checked="true" />
+                    </td>
                     <td colspan="2" align="left">
                         <h3>Hotel<br />
                             <asp:DropDownList ID="cmbHotel" name="hotel" Style="width: 200px" runat="Server">
@@ -103,13 +108,40 @@
                             </asp:DropDownList>
                     </td>
                     <td align="left" class="style35">
-                    <h3>Apt<br />
-                            <asp:TextBox runat="server" Enabled="false" type="cadastro" ID="txtApto" 
-                            name="nApto" size="3" Width="41px" /></td>
-                <td>
-                    <h3>Origem|Preço|Contato<br />
-                            <asp:TextBox runat="server" ID="txtInfo" type="cadastro" name="mais_info" 
-                            size="35" Height="35px" Width="199px" /></td>
+                        <h3>Apt<br />
+                            <asp:TextBox runat="server" Enabled="false" type="cadastro" ID="txtApto"
+                                name="nApto" size="3" Width="41px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Grupo<br />
+                            <asp:DropDownList ID="ddlGrupo" name="grupo" Style="width: 40px" runat="Server">
+                                <asp:ListItem Value="0" Text="Selecione o grupo..." Selected></asp:ListItem>
+                                <asp:ListItem Value="1" Text="1"></asp:ListItem>
+                                <asp:ListItem Value="2" Text="2"></asp:ListItem>
+                                <asp:ListItem Value="3" Text="3"></asp:ListItem>
+                                <asp:ListItem Value="4" Text="4"></asp:ListItem>
+                                <asp:ListItem Value="5" Text="5"></asp:ListItem>
+                                <asp:ListItem Value="6" Text="6"></asp:ListItem>
+                                <asp:ListItem Value="7" Text="7"></asp:ListItem>
+                                <asp:ListItem Value="8" Text="8"></asp:ListItem>
+                            </asp:DropDownList>
+                    </td>
+                    <td align="left" class="style15">
+                        <h4>Idioma</h4>
+                        <asp:DropDownList ID="cmbIdioma" name="Idioma" runat="server">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <h3>Origem|Preço|Contato<br />
+                            <asp:TextBox TextMode="MultiLine" runat="server" ID="txtInfo" type="cadastro" name="mais_info"
+                                size="35" Height="35px" Width="165px" />
+                    </td>
+                    <td align="left" class="style15">
+                        <h4>Privado</h4>
+                        <asp:CheckBox ID="ckbPrivado" runat="server" />
+                    </td>
                 </tr>
                 <%--<tr>
                         <td align="left" class="style20"><h3>E-mail<br/>
@@ -129,10 +161,19 @@
         </table>
     </table>
     <br />
-    <h2>Grupo 1</h2>
-   
-        <%--Inserir Filtros de pesquisa Cliente, Turno e Dia--%>
-   
+    <h2>Grupo 
+        <asp:DropDownList ID="ddlShowingGrupo" name="grupo" runat="Server" Width="40" AutoPostBack="true">
+                                <asp:ListItem Value="1" Text="1" Selected></asp:ListItem>
+                                <asp:ListItem Value="2" Text="2"></asp:ListItem>
+                                <asp:ListItem Value="3" Text="3"></asp:ListItem>
+                                <asp:ListItem Value="4" Text="4"></asp:ListItem>
+                                <asp:ListItem Value="5" Text="5"></asp:ListItem>
+                                <asp:ListItem Value="6" Text="6"></asp:ListItem>
+                                <asp:ListItem Value="7" Text="7"></asp:ListItem>
+                                <asp:ListItem Value="8" Text="8"></asp:ListItem>
+                            </asp:DropDownList></h2>
+
+    <%--Inserir Filtros de pesquisa Cliente, Turno e Dia--%>
     <table width="895" border="1" align="center" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF">
         <td valign="top" class="style10">
             <table border="0" cellspacing="0" cellpadding="10" style="width: 874px; margin-bottom: 0px;">
@@ -191,7 +232,17 @@
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
-                                    
+                                    <asp:BoundField HeaderText="Grupo" DataField="Grupo" HeaderStyle-CssClass="hiddencol" ItemStyle-CssClass="hiddencol">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="5px" />
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Data" DataField="DataHora" HeaderStyle-CssClass="hiddencol" ItemStyle-CssClass="hiddencol">
+                                        <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="5px" />
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+
                                     <asp:TemplateField HeaderText="Ação">
                                         <HeaderStyle BackColor="#5c5c5c" Font-Bold="true" ForeColor="White" Width="30px" HorizontalAlign="Center" />
                                         <HeaderStyle HorizontalAlign="Center" />
@@ -205,13 +256,13 @@
                             </asp:GridView>
 
                             <div style="float: right">
-                                 <asp:DropDownList ID="cmbGuia" name="hotel" Style="width: 304px" runat="Server">
-                                <asp:ListItem Value="0">Selecione o guia</asp:ListItem>
-                                   </asp:DropDownList>
-                                
-                                 <asp:DropDownList ID="cmbMotorista" name="hotel" Style="width: 304px" runat="Server">
-                                <asp:ListItem Value="0">Selecione o motorista</asp:ListItem>
-                                   </asp:DropDownList>
+                                <asp:DropDownList ID="cmbGuia" name="hotel" Style="width: 304px" runat="Server">
+                                    <asp:ListItem Value="0">Selecione o guia</asp:ListItem>
+                                </asp:DropDownList>
+
+                                <asp:DropDownList ID="cmbMotorista" name="hotel" Style="width: 304px" runat="Server">
+                                    <asp:ListItem Value="0">Selecione o motorista</asp:ListItem>
+                                </asp:DropDownList>
                                 <%--<asp:Button runat="server" ID="btnGerarGrupo" Text="Gerar Grupo" OnClick="btnGerarGrupo_Click"/>--%>
                             </div>
                         </td>
@@ -220,7 +271,7 @@
             </table>
     </table>
     <br />
-    
+
 
 </asp:Content>
 

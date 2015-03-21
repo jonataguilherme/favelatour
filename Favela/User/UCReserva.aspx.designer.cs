@@ -40,6 +40,15 @@ namespace Favela.User {
         protected global::System.Web.UI.WebControls.TextBox txtCalendario;
         
         /// <summary>
+        /// txtDataAnterior control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDataAnterior;
+        
+        /// <summary>
         /// Calendario1 control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Favela.User {
         protected global::System.Web.UI.WebControls.Label Calendario1;
         
         /// <summary>
+        /// btnHoje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHoje;
+        
+        /// <summary>
         /// cmbTurno control.
         /// </summary>
         /// <remarks>
@@ -56,24 +74,6 @@ namespace Favela.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList cmbTurno;
-        
-        /// <summary>
-        /// cmbIdioma control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbIdioma;
-        
-        /// <summary>
-        /// ckbPrivado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ckbPrivado;
         
         /// <summary>
         /// txtHorario control.
@@ -130,6 +130,24 @@ namespace Favela.User {
         protected global::System.Web.UI.WebControls.TextBox txtApto;
         
         /// <summary>
+        /// ddlGrupo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlGrupo;
+        
+        /// <summary>
+        /// cmbIdioma control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbIdioma;
+        
+        /// <summary>
         /// txtInfo control.
         /// </summary>
         /// <remarks>
@@ -137,6 +155,15 @@ namespace Favela.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtInfo;
+        
+        /// <summary>
+        /// ckbPrivado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ckbPrivado;
         
         /// <summary>
         /// hdnId control.
@@ -173,6 +200,15 @@ namespace Favela.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnInserir;
+        
+        /// <summary>
+        /// ddlShowingGrupo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowingGrupo;
         
         /// <summary>
         /// idGridGerGrupo control.

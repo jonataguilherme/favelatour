@@ -38,6 +38,12 @@ namespace Favela.Library.Model
 			set; 
 		}
 
+        public int? Grupo
+        {
+            get;
+            set;
+        }
+
 		public DateTime DataHora 
 		{ 
 			get; 
@@ -132,6 +138,7 @@ namespace Favela.Library.Model
 			this.Apartamento = obj.Apartamento;
 			this.OrigemPrecoContato = obj.OrigemPrecoContato;
 			this.Pais = obj.Pais;
+            this.Grupo = obj.Grupo;
 		}
 
 		public void Load(DataRow row)
@@ -149,6 +156,7 @@ namespace Favela.Library.Model
 			if (row.Table.Columns.Contains("apartamento") && !Convert.IsDBNull(row["apartamento"])) this.Apartamento = Convert.ToString(row["apartamento"]);
 			if (row.Table.Columns.Contains("origemPrecoContato") && !Convert.IsDBNull(row["origemPrecoContato"])) this.OrigemPrecoContato = Convert.ToString(row["origemPrecoContato"]);
 			if (row.Table.Columns.Contains("pais") && !Convert.IsDBNull(row["pais"])) this.Pais = Convert.ToString(row["pais"]);
+            if (row.Table.Columns.Contains("grupo") && !Convert.IsDBNull(row["grupo"])) this.Grupo = Convert.ToInt32(row["grupo"]);
         }
 
 		public static List<Reserva> GetList(DataTable dt)

@@ -31,7 +31,7 @@ namespace Favela.Library.Repository.AdoMysql
 
 		public void Add(Reserva obj)
         {
-            string commandText = @" INSERT INTO reserva ( dataHora, idTurno, idIdioma, privativo, nomeCliente, email, quantidade, noHotel, idHotel, apartamento, origemPrecoContato, pais ) VALUES ( @dataHora, @idTurno, @idIdioma, @privativo, @nomeCliente, @email, @quantidade, @noHotel, @idHotel, @apartamento, @origemPrecoContato, @pais )";
+            string commandText = @" INSERT INTO reserva ( dataHora, idTurno, idIdioma, privativo, nomeCliente, email, quantidade, noHotel, idHotel, apartamento, origemPrecoContato, pais, grupo ) VALUES ( @dataHora, @idTurno, @idIdioma, @privativo, @nomeCliente, @email, @quantidade, @noHotel, @idHotel, @apartamento, @origemPrecoContato, @pais, @grupo )";
 
             AdoMysqlCommand command = new AdoMysqlCommand(this.ConnectionString, commandText);
 
@@ -48,6 +48,7 @@ namespace Favela.Library.Repository.AdoMysql
 			command.Parameters.Add("@apartamento", obj.Apartamento);
 			command.Parameters.Add("@origemPrecoContato", obj.OrigemPrecoContato);
 			command.Parameters.Add("@pais", obj.Pais);
+            command.Parameters.Add("@grupo", obj.Grupo);
 
             command.ExecuteNonQuery();
             
@@ -55,7 +56,7 @@ namespace Favela.Library.Repository.AdoMysql
 
         public void Set(Reserva obj)
         {
-            string commandText = @" UPDATE reserva SET dataHora = @dataHora, idTurno = @idTurno, idIdioma = @idIdioma, privativo = @privativo, nomeCliente = @nomeCliente, email = @email, quantidade = @quantidade, noHotel = @noHotel, idHotel = @idHotel, apartamento = @apartamento, origemPrecoContato = @origemPrecoContato, pais = @pais WHERE (id = @id) ";
+            string commandText = @" UPDATE reserva SET dataHora = @dataHora, idTurno = @idTurno, idIdioma = @idIdioma, privativo = @privativo, nomeCliente = @nomeCliente, email = @email, quantidade = @quantidade, noHotel = @noHotel, idHotel = @idHotel, apartamento = @apartamento, origemPrecoContato = @origemPrecoContato, pais = @pais, grupo = @grupo WHERE (id = @id) ";
 
             AdoMysqlCommand command = new AdoMysqlCommand(this.ConnectionString, commandText);
 
@@ -72,6 +73,7 @@ namespace Favela.Library.Repository.AdoMysql
 			command.Parameters.Add("@apartamento", obj.Apartamento);
 			command.Parameters.Add("@origemPrecoContato", obj.OrigemPrecoContato);
 			command.Parameters.Add("@pais", obj.Pais);
+            command.Parameters.Add("@grupo", obj.Grupo);
 
             command.ExecuteNonQuery();
         }
@@ -89,7 +91,7 @@ namespace Favela.Library.Repository.AdoMysql
 
         public void Get(Reserva obj)
         {
-			string commandText = @" SELECT id, dataHora, idTurno, idIdioma, privativo, nomeCliente, email, quantidade, noHotel, idHotel, apartamento, origemPrecoContato, pais FROM reserva WHERE (id = @id) ";
+			string commandText = @" SELECT id, dataHora, idTurno, idIdioma, privativo, nomeCliente, email, quantidade, noHotel, idHotel, apartamento, origemPrecoContato, pais, grupo FROM reserva WHERE (id = @id) ";
 
             AdoMysqlCommand command = new AdoMysqlCommand(this.ConnectionString, commandText);
 
@@ -101,7 +103,7 @@ namespace Favela.Library.Repository.AdoMysql
 
 		public List<Reserva> GetAll() 
 		{
-			string commandText = @" SELECT id, dataHora, idTurno, idIdioma, privativo, nomeCliente, email, quantidade, noHotel, idHotel, apartamento, origemPrecoContato, pais FROM reserva ";
+			string commandText = @" SELECT id, dataHora, idTurno, idIdioma, privativo, nomeCliente, email, quantidade, noHotel, idHotel, apartamento, origemPrecoContato, pais, grupo FROM reserva ";
 
             AdoMysqlCommand command = new AdoMysqlCommand(this.ConnectionString, commandText);
 

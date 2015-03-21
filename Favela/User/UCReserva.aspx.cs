@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -192,11 +193,8 @@ namespace Favela.User
 
             novaReserva.IdHotel = Convert.ToInt32(cmbHotel.SelectedValue);
 
-            int hour = Convert.ToInt32(txtHorario.Text.Substring(0, 2).Replace(":", "").Trim());
-            int minute = Convert.ToInt32(txtHorario.Text.Replace(":", "").Trim());
-            minute %= 100;
-
-            novaReserva.DataHora = new DateTime(cldCalendario.SelectedDate.Year, cldCalendario.SelectedDate.Month, cldCalendario.SelectedDate.Day, hour, minute, 00);
+            novaReserva.Grupo = Convert.ToInt32(ddlGrupo.SelectedValue);
+            novaReserva.DataHora = DateTime.Parse(txtCalendario.Text).Add(TimeSpan.Parse(txtHorario.Text));
             //novaReserva.Email = txtEmail.Text;
             novaReserva.IdIdioma = Convert.ToInt32(cmbIdioma.SelectedValue);
             novaReserva.IdTurno = Convert.ToInt32(cmbTurno.SelectedValue);
@@ -283,10 +281,32 @@ namespace Favela.User
 
         protected void cldCalendario_Click(object sender, EventArgs e)
         {
-            txtCalendario.Text = cldCalendario.SelectedDate.ToString("dd/MM/yyyy");
-            txtCalendario.Visible = true;
-            cldCalendario.Visible = false;
-            LBCalendario.Visible = true;
+            txtDataAnterior.Text = txtCalendario.Text;
+            DateTime selectedDate = cldCalendario.SelectedDate;
+            changeTxtCalendario(selectedDate);
+        }
+
+        protected void btnHoje_Click(object sender, EventArgs e)
+        {
+            changeTxtCalendario(DateTime.Now);
+        }
+
+        private void changeTxtCalendario(DateTime selectedDate)
+        {
+            TimeSpan dateDiff = selectedDate.Subtract(DateTime.Now);
+            if (dateDiff > (new TimeSpan(75, 0, 0, 0)))
+            {
+                Response.Write("<script>alert('Selecione uma data de até 75 dias à frente');</script>");
+            }
+            else
+            {
+                txtCalendario.Text = selectedDate.ToString("dd/MM/yyyy");
+                txtCalendario.Visible = true;
+                cldCalendario.Visible = false;
+                LBCalendario.Visible = true;
+                gvGerGrupo.DataBind();
+            }
+
         }
 
         protected void chkIncluir_CheckedChanged(object sender, EventArgs e)
@@ -300,49 +320,63 @@ namespace Favela.User
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //Horário
-                e.Row.Cells[0].Text = DateTime.Parse(e.Row.Cells[0].Text).ToString("hh:MM");
-
-                //Idioma
-                Idioma i = new Idioma();
-                i.Id = int.Parse(e.Row.Cells[3].Text);
-                Idioma.Repository.Get(i);
-                e.Row.Cells[3].Text = i.Descricao;
-
-                //Privativo
-                bool pvd = bool.Parse(e.Row.Cells[4].Text);
-                if (pvd)
-                {
-                    e.Row.Cells[4].Text = "S";
-                    e.Row.ForeColor = System.Drawing.Color.White;
-                    e.Row.BackColor = System.Drawing.Color.Red;
-                }
-                else
-                    e.Row.Cells[4].Text = String.Empty;
-
-                //NO
-                bool NO = bool.Parse(e.Row.Cells[5].Text);
-                if (NO)
-                    e.Row.Cells[5].Text = "S";
-                else
-                    e.Row.Cells[5].Text = String.Empty;
-
-                //Hotel
-                Hotel h = new Hotel();
-                h.Id = int.Parse(e.Row.Cells[6].Text);
-                if (h.Id == 0)
-                {
-                    e.Row.Cells[6].Text = "Não cadastrado";
-                    e.Row.ForeColor = System.Drawing.Color.White;
-                    e.Row.BackColor = System.Drawing.Color.Red;
-                }
+                //Grupo: Item 9 invisível
+                int showingGrupo = Int32.Parse(ddlShowingGrupo.SelectedValue);
+                if (Int32.Parse(e.Row.Cells[9].Text) != showingGrupo)
+                    e.Row.Visible = false;
                 else
                 {
-                    Hotel.Repository.Get(h);
-                    e.Row.Cells[6].Text = h.Nome;
+                    //Data: Item 10 invisível
+                    DateTime dataHora = DateTime.Parse(e.Row.Cells[10].Text);
+                    if (DateTime.Compare(DateTime.Parse(txtCalendario.Text),DateTime.Parse(dataHora.ToString("dd/MM/yyyy"))) != 0)
+                        e.Row.Visible = false;
+                    else
+                    {
+                        //Horário: Item 0
+                        e.Row.Cells[0].Text = dataHora.ToString("HH:mm");
+
+                        //Idioma: Item 3
+                        Idioma i = new Idioma();
+                        i.Id = int.Parse(e.Row.Cells[3].Text);
+                        Idioma.Repository.Get(i);
+                        e.Row.Cells[3].Text = i.Descricao;
+
+                        //Privativo: Item 4
+                        bool pvd = bool.Parse(e.Row.Cells[4].Text);
+                        if (pvd)
+                        {
+                            e.Row.Cells[4].Text = "S";
+                            e.Row.ForeColor = System.Drawing.Color.White;
+                            e.Row.BackColor = System.Drawing.Color.Red;
+                        }
+                        else
+                            e.Row.Cells[4].Text = String.Empty;
+
+                        //NO: Item 5
+                        bool NO = bool.Parse(e.Row.Cells[5].Text);
+                        if (NO)
+                            e.Row.Cells[5].Text = "S";
+                        else
+                            e.Row.Cells[5].Text = String.Empty;
+
+                        //Hotel: Item 6
+                        Hotel h = new Hotel();
+                        h.Id = int.Parse(e.Row.Cells[6].Text);
+                        if (h.Id == 0)
+                        {
+                            e.Row.Cells[6].Text = "Não cadastrado";
+                            e.Row.ForeColor = System.Drawing.Color.White;
+                            e.Row.BackColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+                            Hotel.Repository.Get(h);
+                            e.Row.Cells[6].Text = h.Nome;
+                        }
+                    }
                 }
             }
         }
-        
+
     }
 }
