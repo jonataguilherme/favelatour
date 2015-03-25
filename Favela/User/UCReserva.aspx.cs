@@ -12,6 +12,9 @@ namespace Favela.User
 {
     public partial class UCReserva : System.Web.UI.Page
     {
+        int tempQtdd = 0;
+        List<Reserva> reservasCadastradas = new List<Reserva>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -22,10 +25,12 @@ namespace Favela.User
                 this.SetGuiasDropDownList();
                 this.SetMotoristasDropDownList();
 
-                txtCalendario.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                txtCalendario.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                SetDataReservasGrid();
             }
 
             SetDataReservasGrid();
+
         }
 
         private void SetMotoristasDropDownList()
@@ -37,10 +42,18 @@ namespace Favela.User
             foreach (Funcionario motorista in motoristasCadastrados)
             {
                 ListItem item = new ListItem(motorista.Nome, motorista.Matricula.ToString());
-                cmbMotorista.Items.Add(item);
+                cmbMotorista_0.Items.Add(item);
+                cmbMotorista_1.Items.Add(item);
+                cmbMotorista_2.Items.Add(item);
+                cmbMotorista_3.Items.Add(item);
+                cmbMotorista_4.Items.Add(item);
             }
 
-            cmbMotorista.SelectedValue = "0";
+            cmbMotorista_0.SelectedValue = "0";
+            cmbMotorista_1.SelectedValue = "0";
+            cmbMotorista_2.SelectedValue = "0";
+            cmbMotorista_3.SelectedValue = "0";
+            cmbMotorista_4.SelectedValue = "0";
         }
 
         private void SetGuiasDropDownList()
@@ -52,18 +65,40 @@ namespace Favela.User
             foreach (Funcionario guia in guiasCadastrados)
             {
                 ListItem item = new ListItem(guia.Nome, guia.Matricula.ToString());
-                cmbGuia.Items.Add(item);
+                cmbGuia_0.Items.Add(item);
+                cmbGuia_1.Items.Add(item);
+                cmbGuia_2.Items.Add(item);
+                cmbGuia_3.Items.Add(item);
+                cmbGuia_4.Items.Add(item);
+                
             }
 
-            cmbGuia.SelectedValue = "0";
+            cmbGuia_0.SelectedValue = "0";
+            cmbGuia_1.SelectedValue = "0";
+            cmbGuia_2.SelectedValue = "0";
+            cmbGuia_3.SelectedValue = "0";
+            cmbGuia_4.SelectedValue = "0";
         }
 
         private void SetDataReservasGrid()
         {
-            List<Reserva> reservasCadastradas = new List<Reserva>();
             reservasCadastradas = Reserva.Repository.GetAll();
             gvGerGrupo.DataSource = reservasCadastradas;
             gvGerGrupo.DataBind();
+            gvGerGrupo_1.DataSource = reservasCadastradas;// onde acrescentei as o que vc falou
+            gvGerGrupo_1.DataBind();// onde acrescentei as o que vc falou
+            gvGerGrupo_2.DataSource = reservasCadastradas;// onde acrescentei as o que vc falou
+            gvGerGrupo_2.DataBind();// onde acrescentei as o que vc falou
+            gvGerGrupo_3.DataSource = reservasCadastradas;// onde acrescentei as o que vc falou
+            gvGerGrupo_3.DataBind();// onde acrescentei as o que vc falou
+            gvGerGrupo_4.DataSource = reservasCadastradas;// onde acrescentei as o que vc falou
+            gvGerGrupo_4.DataBind();// onde acrescentei as o que vc falou
+            //gvGerGrupo_5.DataSource = reservasCadastradas;// onde acrescentei as o que vc falou
+            //gvGerGrupo_5.DataBind();// onde acrescentei as o que vc falou
+            //gvGerGrupo_6.DataSource = reservasCadastradas;// onde acrescentei as o que vc falou
+            //gvGerGrupo_6.DataBind();// onde acrescentei as o que vc falou
+            //gvGerGrupo_7.DataSource = reservasCadastradas;// onde acrescentei as o que vc falou
+            //gvGerGrupo_7.DataBind();// onde acrescentei as o que vc falou
         }
 
         protected void ckbNoHotel_CheckedChanged(object sender, EventArgs e)
@@ -124,6 +159,8 @@ namespace Favela.User
 
             clearFields();
 
+            SetDataReservasGrid();
+
         }
 
         private void clearFields()
@@ -146,12 +183,7 @@ namespace Favela.User
             Reserva novaReserva = new Reserva();
 
             getDataFromFields(novaReserva);
-
-            if (!ckbNoHotel.Checked)
-            {
-                novaReserva.Apartamento = null;
-            }
-
+            
             novaReserva.Id = int.Parse(hdnId.Text);
 
             try
@@ -186,7 +218,7 @@ namespace Favela.User
         {
             novaReserva.NoHotel = ckbNoHotel.Checked;
 
-            if (ckbNoHotel.Checked)
+            if (!ckbNoHotel.Checked)
             {
                 novaReserva.Apartamento = txtApto.Text;
             }
@@ -237,9 +269,9 @@ namespace Favela.User
             cmbTurno.SelectedValue = res.IdTurno.ToString();
 
             txtApto.Text = res.Apartamento;
-            txtCalendario.Text = res.DataHora.ToString("dd/MM/yyyy");
+            txtCalendario.Text = res.DataHora.ToString("yyyy/MM/dd");
             txtCliente.Text = res.NomeCliente;
-            txtHorario.Text = res.DataHora.ToString("hh:mm");
+            txtHorario.Text = res.DataHora.ToString("HH:mm");
             txtInfo.Text = res.OrigemPrecoContato;
             txtQuantidade.Text = res.Quantidade.ToString();
 
@@ -256,6 +288,7 @@ namespace Favela.User
             res.Id = int.Parse(btn.CommandArgument);
 
             Reserva.Repository.Remove(res);
+            SetDataReservasGrid();
         }
         
         protected void gvGerGrupo_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -268,11 +301,6 @@ namespace Favela.User
 
         }
         
-        /*protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }*/
-
         protected void LBCalendario_Click(object sender, EventArgs e)
         {
             cldCalendario.Visible = true;
@@ -284,11 +312,7 @@ namespace Favela.User
             txtDataAnterior.Text = txtCalendario.Text;
             DateTime selectedDate = cldCalendario.SelectedDate;
             changeTxtCalendario(selectedDate);
-        }
 
-        protected void btnHoje_Click(object sender, EventArgs e)
-        {
-            changeTxtCalendario(DateTime.Now);
         }
 
         private void changeTxtCalendario(DateTime selectedDate)
@@ -300,11 +324,11 @@ namespace Favela.User
             }
             else
             {
-                txtCalendario.Text = selectedDate.ToString("dd/MM/yyyy");
+                txtCalendario.Text = selectedDate.ToString("yyyy/MM/dd");
                 txtCalendario.Visible = true;
                 cldCalendario.Visible = false;
                 LBCalendario.Visible = true;
-                gvGerGrupo.DataBind();
+                SetDataReservasGrid();
             }
 
         }
@@ -315,9 +339,18 @@ namespace Favela.User
 
         }
 
+        protected void trataTempQtdd(int idCurrent)
+        {
+            if (idCurrent == reservasCadastradas[0].Id)
+                tempQtdd = 0;
+        }
+
+        //Grupo 1
         protected void gvGerGrupo_DataBound(object sender, GridViewRowEventArgs e)
         {
-
+            //Torna 0 variável de contagem quando o índice corrente for o menor índice na grid
+            trataTempQtdd(e.Row.RowIndex);
+            
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Grupo: Item 9 invisível
@@ -328,55 +361,445 @@ namespace Favela.User
                 {
                     //Data: Item 10 invisível
                     DateTime dataHora = DateTime.Parse(e.Row.Cells[10].Text);
-                    if (DateTime.Compare(DateTime.Parse(txtCalendario.Text),DateTime.Parse(dataHora.ToString("dd/MM/yyyy"))) != 0)
+                    if (DateTime.Compare(DateTime.Parse(txtCalendario.Text), DateTime.Parse(dataHora.ToString("yyyy/MM/dd"))) != 0)
                         e.Row.Visible = false;
                     else
                     {
-                        //Horário: Item 0
-                        e.Row.Cells[0].Text = dataHora.ToString("HH:mm");
-
-                        //Idioma: Item 3
-                        Idioma i = new Idioma();
-                        i.Id = int.Parse(e.Row.Cells[3].Text);
-                        Idioma.Repository.Get(i);
-                        e.Row.Cells[3].Text = i.Descricao;
-
-                        //Privativo: Item 4
-                        bool pvd = bool.Parse(e.Row.Cells[4].Text);
-                        if (pvd)
+                        //Turno: Item 11 invisível
+                        if (Int32.Parse(e.Row.Cells[11].Text) != Int32.Parse(cmbTurno.SelectedValue))
+                            e.Row.Visible = false;
+                        else
                         {
-                            e.Row.Cells[4].Text = "S";
-                            e.Row.ForeColor = System.Drawing.Color.White;
-                            e.Row.BackColor = System.Drawing.Color.Red;
+                            //Horário: Item 0
+                            e.Row.Cells[0].Text = dataHora.ToString("HH:mm");
+
+                            //Quantidade: Item 1
+                            tempQtdd += Int32.Parse(e.Row.Cells[1].Text);
+
+                            //Idioma: Item 3
+                            Idioma i = new Idioma();
+                            i.Id = int.Parse(e.Row.Cells[3].Text);
+                            Idioma.Repository.Get(i);
+                            e.Row.Cells[3].Text = i.Descricao;
+
+                            //Privativo: Item 4
+                            bool pvd = bool.Parse(e.Row.Cells[4].Text);
+                            if (pvd)
+                            {
+                                e.Row.Cells[4].Text = "S";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                                e.Row.Cells[4].Text = String.Empty;
+
+                            //NO: Item 5
+                            bool NO = bool.Parse(e.Row.Cells[5].Text);
+                            if (NO)
+                                e.Row.Cells[5].Text = "S";
+                            else
+                                e.Row.Cells[5].Text = String.Empty;
+
+                            //Hotel: Item 6
+                            Hotel h = new Hotel();
+                            h.Id = int.Parse(e.Row.Cells[6].Text);
+                            if (h.Id == 0)
+                            {
+                                e.Row.Cells[6].Text = "Não cadastrado";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                            {
+                                Hotel.Repository.Get(h);
+                                e.Row.Cells[6].Text = h.Nome;
+                            }
                         }
-                        else
-                            e.Row.Cells[4].Text = String.Empty;
+                    }
+                }
+            }
 
-                        //NO: Item 5
-                        bool NO = bool.Parse(e.Row.Cells[5].Text);
-                        if (NO)
-                            e.Row.Cells[5].Text = "S";
-                        else
-                            e.Row.Cells[5].Text = String.Empty;
+            lblQuantidadeGrupo_0.Text = " " + tempQtdd.ToString();
 
-                        //Hotel: Item 6
-                        Hotel h = new Hotel();
-                        h.Id = int.Parse(e.Row.Cells[6].Text);
-                        if (h.Id == 0)
-                        {
-                            e.Row.Cells[6].Text = "Não cadastrado";
-                            e.Row.ForeColor = System.Drawing.Color.White;
-                            e.Row.BackColor = System.Drawing.Color.Red;
-                        }
+        }
+
+        protected void btnEviar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEncerrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //nova informação
+        //Grupo 2
+        protected void gvGerGrupo_PageIndexChanging_1(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvGrupoGer_PageIndexChanging_1(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvGerGrupo_DataBound_1(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //Grupo: Item 9 invisível
+                int showingGrupo = Int32.Parse(ddlShowingGrupo_1.SelectedValue);
+                if (Int32.Parse(e.Row.Cells[9].Text) != showingGrupo)
+                    e.Row.Visible = false;
+                else
+                {
+                    //Data: Item 10 invisível
+                    DateTime dataHora = DateTime.Parse(e.Row.Cells[10].Text);
+                    if (DateTime.Compare(DateTime.Parse(txtCalendario.Text), DateTime.Parse(dataHora.ToString("yyyy/MM/dd"))) != 0)
+                        e.Row.Visible = false;
+                    else
+                    {
+                        //Turno: Item 11 invisível
+                        if (Int32.Parse(e.Row.Cells[11].Text) != Int32.Parse(cmbTurno.SelectedValue))
+                            e.Row.Visible = false;
                         else
                         {
-                            Hotel.Repository.Get(h);
-                            e.Row.Cells[6].Text = h.Nome;
+
+
+                            //Horário: Item 0
+                            e.Row.Cells[0].Text = dataHora.ToString("HH:mm");
+
+                            //Idioma: Item 3
+                            Idioma i = new Idioma();
+                            i.Id = int.Parse(e.Row.Cells[3].Text);
+                            Idioma.Repository.Get(i);
+                            e.Row.Cells[3].Text = i.Descricao;
+
+                            //Privativo: Item 4
+                            bool pvd = bool.Parse(e.Row.Cells[4].Text);
+                            if (pvd)
+                            {
+                                e.Row.Cells[4].Text = "S";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                                e.Row.Cells[4].Text = String.Empty;
+
+                            //NO: Item 5
+                            bool NO = bool.Parse(e.Row.Cells[5].Text);
+                            if (NO)
+                                e.Row.Cells[5].Text = "S";
+                            else
+                                e.Row.Cells[5].Text = String.Empty;
+
+                            //Hotel: Item 6
+                            Hotel h = new Hotel();
+                            h.Id = int.Parse(e.Row.Cells[6].Text);
+                            if (h.Id == 0)
+                            {
+                                e.Row.Cells[6].Text = "Não cadastrado";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                            {
+                                Hotel.Repository.Get(h);
+                                e.Row.Cells[6].Text = h.Nome;
+                            }
                         }
                     }
                 }
             }
         }
+        protected void btnEviar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEncerrar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        //Grupo 3
+        
+        protected void gvGerGrupo_PageIndexChanging_2(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvGrupoGer_PageIndexChanging_2(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvGerGrupo_DataBound_2(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //Grupo: Item 9 invisível
+                int showingGrupo = Int32.Parse(ddlShowingGrupo_2.SelectedValue);
+                if (Int32.Parse(e.Row.Cells[9].Text) != showingGrupo)
+                    e.Row.Visible = false;
+                else
+                {
+                    //Data: Item 10 invisível
+                    DateTime dataHora = DateTime.Parse(e.Row.Cells[10].Text);
+                    if (DateTime.Compare(DateTime.Parse(txtCalendario.Text), DateTime.Parse(dataHora.ToString("yyyy/MM/dd"))) != 0)
+                        e.Row.Visible = false;
+                    else
+                    {
+                        //Turno: Item 11 invisível
+                        if (Int32.Parse(e.Row.Cells[11].Text) != Int32.Parse(cmbTurno.SelectedValue))
+                            e.Row.Visible = false;
+                        else
+                        {
+                            //Horário: Item 0
+                            e.Row.Cells[0].Text = dataHora.ToString("HH:mm");
+
+                            //Idioma: Item 3
+                            Idioma i = new Idioma();
+                            i.Id = int.Parse(e.Row.Cells[3].Text);
+                            Idioma.Repository.Get(i);
+                            e.Row.Cells[3].Text = i.Descricao;
+
+                            //Privativo: Item 4
+                            bool pvd = bool.Parse(e.Row.Cells[4].Text);
+                            if (pvd)
+                            {
+                                e.Row.Cells[4].Text = "S";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                                e.Row.Cells[4].Text = String.Empty;
+
+                            //NO: Item 5
+                            bool NO = bool.Parse(e.Row.Cells[5].Text);
+                            if (NO)
+                                e.Row.Cells[5].Text = "S";
+                            else
+                                e.Row.Cells[5].Text = String.Empty;
+
+                            //Hotel: Item 6
+                            Hotel h = new Hotel();
+                            h.Id = int.Parse(e.Row.Cells[6].Text);
+                            if (h.Id == 0)
+                            {
+                                e.Row.Cells[6].Text = "Não cadastrado";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                            {
+                                Hotel.Repository.Get(h);
+                                e.Row.Cells[6].Text = h.Nome;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protected void btnEviar_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEncerrar_Click_2(object sender, EventArgs e)
+        {
+
+        }
+       
+        //Grupo 4
+       
+        protected void gvGerGrupo_PageIndexChanging_3(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvGrupoGer_PageIndexChanging_3(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvGerGrupo_DataBound_3(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //Grupo: Item 9 invisível
+                int showingGrupo = Int32.Parse(ddlShowingGrupo_3.SelectedValue);
+                if (Int32.Parse(e.Row.Cells[9].Text) != showingGrupo)
+                    e.Row.Visible = false;
+                else
+                {
+                    //Data: Item 10 invisível
+                    DateTime dataHora = DateTime.Parse(e.Row.Cells[10].Text);
+                    if (DateTime.Compare(DateTime.Parse(txtCalendario.Text), DateTime.Parse(dataHora.ToString("yyyy/MM/dd"))) != 0)
+                        e.Row.Visible = false;
+                    else
+                    {
+                        //Turno: Item 11 invisível
+                        if (Int32.Parse(e.Row.Cells[11].Text) != Int32.Parse(cmbTurno.SelectedValue))
+                            e.Row.Visible = false;
+                        else
+                        {
+                            //Horário: Item 0
+                            e.Row.Cells[0].Text = dataHora.ToString("HH:mm");
+
+                            //Idioma: Item 3
+                            Idioma i = new Idioma();
+                            i.Id = int.Parse(e.Row.Cells[3].Text);
+                            Idioma.Repository.Get(i);
+                            e.Row.Cells[3].Text = i.Descricao;
+
+                            //Privativo: Item 4
+                            bool pvd = bool.Parse(e.Row.Cells[4].Text);
+                            if (pvd)
+                            {
+                                e.Row.Cells[4].Text = "S";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                                e.Row.Cells[4].Text = String.Empty;
+
+                            //NO: Item 5
+                            bool NO = bool.Parse(e.Row.Cells[5].Text);
+                            if (NO)
+                                e.Row.Cells[5].Text = "S";
+                            else
+                                e.Row.Cells[5].Text = String.Empty;
+
+                            //Hotel: Item 6
+                            Hotel h = new Hotel();
+                            h.Id = int.Parse(e.Row.Cells[6].Text);
+                            if (h.Id == 0)
+                            {
+                                e.Row.Cells[6].Text = "Não cadastrado";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                            {
+                                Hotel.Repository.Get(h);
+                                e.Row.Cells[6].Text = h.Nome;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protected void btnEviar_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEncerrar_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        //Grupo 5
+       
+        protected void gvGerGrupo_PageIndexChanging_4(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvGrupoGer_PageIndexChanging_4(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvGerGrupo_DataBound_4(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //Grupo: Item 9 invisível
+                int showingGrupo = Int32.Parse(ddlShowingGrupo_4.SelectedValue);
+                if (Int32.Parse(e.Row.Cells[9].Text) != showingGrupo)
+                    e.Row.Visible = false;
+                else
+                {
+                    //Data: Item 10 invisível
+                    DateTime dataHora = DateTime.Parse(e.Row.Cells[10].Text);
+                    if (DateTime.Compare(DateTime.Parse(txtCalendario.Text), DateTime.Parse(dataHora.ToString("yyyy/MM/dd"))) != 0)
+                        e.Row.Visible = false;
+                    else
+                    {
+                        //Turno: Item 11 invisível
+                        if (Int32.Parse(e.Row.Cells[11].Text) != Int32.Parse(cmbTurno.SelectedValue))
+                            e.Row.Visible = false;
+                        else
+                        {
+                            //Horário: Item 0
+                            e.Row.Cells[0].Text = dataHora.ToString("HH:mm");
+
+                            //Idioma: Item 3
+                            Idioma i = new Idioma();
+                            i.Id = int.Parse(e.Row.Cells[3].Text);
+                            Idioma.Repository.Get(i);
+                            e.Row.Cells[3].Text = i.Descricao;
+
+                            //Privativo: Item 4
+                            bool pvd = bool.Parse(e.Row.Cells[4].Text);
+                            if (pvd)
+                            {
+                                e.Row.Cells[4].Text = "S";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                                e.Row.Cells[4].Text = String.Empty;
+
+                            //NO: Item 5
+                            bool NO = bool.Parse(e.Row.Cells[5].Text);
+                            if (NO)
+                                e.Row.Cells[5].Text = "S";
+                            else
+                                e.Row.Cells[5].Text = String.Empty;
+
+                            //Hotel: Item 6
+                            Hotel h = new Hotel();
+                            h.Id = int.Parse(e.Row.Cells[6].Text);
+                            if (h.Id == 0)
+                            {
+                                e.Row.Cells[6].Text = "Não cadastrado";
+                                e.Row.ForeColor = System.Drawing.Color.White;
+                                e.Row.BackColor = System.Drawing.Color.Red;
+                            }
+                            else
+                            {
+                                Hotel.Repository.Get(h);
+                                e.Row.Cells[6].Text = h.Nome;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void btnEviar_Click_4(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEncerrar_Click_4(object sender, EventArgs e)
+        {
+
+        }
+
+        //Grupo 6
+        
+        //Grupo 7
+
+        //fim da nova informação
 
     }
 }
